@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heroku Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .table1,
+        .table2 {
+            margin: 0% 5%;
+        }
+
+        .table1 table {
+            width: 200px;
+            border-collapse: collapse;
+        }
+
+        .table1 th,
+        .table1 td {
+            border: solid 1px black;
+            text-align: start;
+        }
+
+        #align-right {
+            text-align: end;
+        }
+
+        .table2 table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .table2 thead tr th,
+        .table2 tbody tr td {
+            border: solid 1px black;
+            text-align: center;
+            padding: 5px 100px;
+        }
+
+        #table-2 {
+            display: none;
+        }
+
+        #showButton {
+            margin: 1% 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="table1">
+        <table id="table-1">
+            <h1>Table 1</h1>
+            <tr>
+                <th>Index #</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>A1</td>
+                <td id="align-right">41</td>
+            </tr>
+            <tr>
+                <td>A2</td>
+                <td id="align-right">18</td>
+            </tr>
+            <tr>
+                <td>A3</td>
+                <td id="align-right">21</td>
+            </tr>
+            <tr>
+                <td>A4</td>
+                <td id="align-right">63</td>
+            </tr>
+            <tr>
+                <td>A5</td>
+                <td id="align-right">2</td>
+            </tr>
+            <tr>
+                <td>A6</td>
+                <td id="align-right">53</td>
+            </tr>
+            <tr>
+                <td>A7</td>
+                <td id="align-right">5</td>
+            </tr>
+            <tr>
+                <td>A8</td>
+                <td id="align-right">57</td>
+            </tr>
+            <tr>
+                <td>A9</td>
+                <td id="align-right">60</td>
+            </tr>
+            <tr>
+                <td>A10</td>
+                <td id="align-right">93</td>
+            </tr>
+            <tr>
+                <td>A11</td>
+                <td id="align-right">28</td>
+            </tr>
+            <tr>
+                <td>A12</td>
+                <td id="align-right">3</td>
+            </tr>
+            <tr>
+                <td>A13</td>
+                <td id="align-right">90</td>
+            </tr>
+            <tr>
+                <td>A14</td>
+                <td id="align-right">39</td>
+            </tr>
+            <tr>
+                <td>A15</td>
+                <td id="align-right">80</td>
+            </tr>
+            <tr>
+                <td>A16</td>
+                <td id="align-right">88</td>
+            </tr>
+            <tr>
+                <td>A17</td>
+                <td id="align-right">49</td>
+            </tr>
+            <tr>
+                <td>A18</td>
+                <td id="align-right">60</td>
+            </tr>
+            <tr>
+                <td>A19</td>
+                <td id="align-right">26</td>
+            </tr>
+            <tr>
+                <td>A20</td>
+                <td id="align-right">28</td>
+            </tr>
+        </table>
+    </div>
+
+    <button onclick="showTable2()" id="showButton">Show Table 2</button>
+
+    <div class="table2">
+        <table id="table-2">
+            <h1>Table 2</h1>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script>
+        function showTable2() {
+            const table = document.getElementById('table-1');
+            const table2 = document.getElementById('table-2').getElementsByTagName('tbody')[0];
+
+            // Get the value from the second column of each specified row
+            const A5 = parseInt(table.rows[5].cells[1].textContent);
+            const A7 = parseInt(table.rows[7].cells[1].textContent);
+            const A12 = parseInt(table.rows[12].cells[1].textContent);
+            const A13 = parseInt(table.rows[13].cells[1].textContent);
+            const A15 = parseInt(table.rows[15].cells[1].textContent);
+            const A20 = parseInt(table.rows[20].cells[1].textContent);
+
+            const alphatxt = "Alpha";
+            const alpha = A5 + A20;
+            const betatxt = "Beta";
+            const beta = A15 / A7;
+            const charlietxt = "Charlie";
+            const charlie = A13 * A12;
+
+            const newRow1 = table2.insertRow();
+            const row1cell1 = newRow1.insertCell();
+            row1cell1.textContent = alphatxt;
+            const row1cell2 = newRow1.insertCell();
+            row1cell2.textContent = alpha;
+
+            const newRow2 = table2.insertRow();
+            const row2cell1 = newRow2.insertCell();
+            row2cell1.textContent = betatxt;
+            const row2cell2 = newRow2.insertCell();
+            row2cell2.textContent = beta;
+
+            const newRow3 = table2.insertRow();
+            const row3cell1 = newRow3.insertCell();
+            row3cell1.textContent = charlietxt;
+            const row3cell2 = newRow3.insertCell();
+            row3cell2.textContent = charlie;
+
+            document.getElementById('table-2').style.display = 'block';
+            document.getElementById('showButton').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
